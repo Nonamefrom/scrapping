@@ -76,7 +76,7 @@ for vacancy in vacancies:
     salary = extract_salary(vacancy_soup)
     name_company = extract_company_name(vacancy_soup)
     # Добавления собранных данных в список parsed_data если есть ключевые слова в описании:
-    if keyword_check:
+    if keyword_check and '₽' in salary:
         parsed_data.append({
             "link": link,
             "city": city,
@@ -85,3 +85,4 @@ for vacancy in vacancies:
         })
 
 write_data_to_json_file(parsed_data)
+#  $  ₽   оставлены для подстановки в 79 строчку в целях отладки, на момент написания кода зп с USD небыло в наличии
